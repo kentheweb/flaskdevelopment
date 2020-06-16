@@ -1,0 +1,54 @@
+{% extends 'public/base.html' %} {% block body%}
+<div class="container position-absolute" style="top: 4em; left: 15%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <h4 class="text text-uppercase font-weight-bold">your profile</h4>
+                <img src="https://gravatar.com/avatar/{{member.url}}?s=120&d=monsterid" alt="profile" class="rounded-circle" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+            </div>
+            <div class="col-lg-4 mt-2 col-md-4 col-xs-4 col-sm-4">
+                <h6 class="text text-uppercase">location : <small>{{member.location}}</small></h6>
+                <h6 class="text text-uppercase">occupation : <small>{{member.occupation}}</small></h6>
+                <h6 class="text text-uppercase">username : <small>{{member.name}}</small></h6>
+                <h6>About</h6>
+                <p>{{member.hobby}}</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                <small><a style="cursor: pointer;" data-toggle="modal" data-target="#updateModal"><span class="fa fa-pencil"></span> update your profile</a></small>
+            </div>
+        </div>
+        <a href="{{url_for('users.all_posts')}}" class="btn btn-outline-primary">all posts {{count}}</a>
+        <a href="{{url_for('users.all_questions')}}" class="btn btn-outline-primary">all questions {{quiz}}</a>
+        <a href="{{url_for('users.all_answer')}}" class="btn btn-outline-primary">all answers {{answer}}</a>
+    </div>
+    <hr>
+    <div class="container">
+        <h4 class="text text-break">CREATE YOUR BLOG</h4>
+        <form method="post">
+            <div class="form-group">
+                <label for="title">Enter your title</label>
+                <textarea name="title" id="editor1" class="form-control form-control-sm" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="blog">Enter your blog</label>
+                <textarea name="post" id="editor2" class="form-control form-control-sm" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">select the category of your post</label>
+                <select name="category" id="category" class='form-control form-control-sm' required>
+                    <option value="programming">programming</option>
+                    <option value="technology">technology</option>
+                    <option value="mathematics">mathematics</option>
+                    <option value="politics">politics</option>
+                    <option value="sports">sports</option>
+                    <option value="religion">religion</option>
+                    <option value="health">health</option>
+                    <option value="entertainment">entertainment</option>
+                    <option value="investment">investment</option>
+                </select>
+            </div>
+            <input type="submit" value="upload your post" class="btn btn-outline-danger">
+        </form>
+    </div>
+</div>
+{% endblock body%}
